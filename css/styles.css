@@ -137,14 +137,14 @@ section { position: relative; }
 .nav-wrap {
   max-width: var(--container);
   margin: 0 auto;
-  padding: 14px 24px;
+  padding: 20px 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
 }
-.brand { display: flex; align-items: center; gap: 10px; font-family: var(--font-head); font-weight: 800; color: var(--teal-900); font-size: 1.08rem; }
-.brand img { width: 40px; height: 40px; }
+.brand { display: flex; align-items: center; gap: 12px; font-family: var(--font-head); font-weight: 800; color: var(--teal-900); font-size: 1.08rem; word-spacing: -0.22em; }
+.brand img { width: 76px; height: 76px; }
 .brand span.accent { color: var(--gold-600); }
 
 .nav-links { display: flex; align-items: center; gap: 30px; }
@@ -216,7 +216,7 @@ section { position: relative; }
 .hero-grid { display: grid; grid-template-columns: 1.08fr 0.92fr; gap: 56px; align-items: center; }
 @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } }
 
-.badge-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 22px; }
+.badge-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
 .badge {
   display: inline-flex; align-items: center; gap: 6px;
   background: var(--teal-050); color: var(--teal-800);
@@ -240,19 +240,17 @@ section { position: relative; }
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
-  padding: 30px 30px 68px;
+  padding: 30px;
   position: relative;
+  overflow: hidden;
   z-index: 2;
 }
+.hero-card-content { position: relative; z-index: 1; }
+.hero-card-watermark { right: -34px; bottom: -34px; width: 210px; height: 210px; }
 .hero-card .stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 18px; }
-.hero-stat { background: var(--teal-025); border-radius: var(--radius-sm); padding: 16px; }
+.hero-stat { background: var(--teal-025); border-radius: var(--radius-sm); padding: 16px; position: relative; z-index: 1; }
 .hero-stat .num { font-family: var(--font-head); font-weight: 800; font-size: 1.5rem; color: var(--teal-900); }
 .hero-stat .lbl { font-size: 0.78rem; color: var(--ink-500); margin-top: 2px; }
-.hero-logo-badge {
-  position: absolute; right: 20px; bottom: -16px;
-  width: 76px; height: 76px; z-index: 3;
-  filter: drop-shadow(var(--shadow-md));
-}
 .hero-blob {
   position: absolute; width: 460px; height: 460px; border-radius: 50%;
   background: var(--sage-100); top: -120px; right: -140px; z-index: 0;
@@ -504,8 +502,8 @@ section { position: relative; }
 .site-footer { background: var(--ink-900); color: #B9D3CF; padding: 60px 0 26px; }
 .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 34px; margin-bottom: 40px; }
 @media (max-width: 780px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
-.footer-brand { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
-.footer-brand img { width: 38px; height: 38px; }
+.footer-brand { display: flex; align-items: center; gap: 13px; margin-bottom: 14px; }
+.footer-brand img { width: 46px; height: 46px; }
 .footer-brand span { font-family: var(--font-head); font-weight: 800; color: var(--white); }
 .site-footer h5 { color: var(--white); font-family: var(--font-head); font-size: 0.86rem; letter-spacing: .04em; text-transform: uppercase; margin-bottom: 14px; }
 .site-footer ul { display: flex; flex-direction: column; gap: 9px; }
@@ -729,6 +727,27 @@ body.page-ready { opacity: 1; animation: pageFadeIn 0.55s ease both; }
 .page-hero p { color: var(--ink-500); font-size: 1.1rem; max-width: 620px; }
 .page-hero.on-dark { background: linear-gradient(160deg, var(--teal-900), #0A4A52); }
 .page-hero.on-dark .page-hero-blob { background: var(--teal-800); opacity: 0.5; }
+
+.feature-image {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg, 20px);
+  box-shadow: var(--shadow-md);
+  display: block;
+}
+.feature-image-wrap { position: relative; }
+
+/* Subtle, oversized brand-mark watermark: the real logo asset at low opacity,
+   used selectively behind a couple of major sections. Never distorted or
+   recoloured, just faded and enlarged so it reads as a quiet background texture. */
+.logo-watermark {
+  position: absolute;
+  width: 620px; height: 620px;
+  opacity: 0.05;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+}
 
 .wave-divider { display: block; width: 100%; height: 56px; position: absolute; left: 0; right: 0; bottom: -1px; z-index: 1; }
 

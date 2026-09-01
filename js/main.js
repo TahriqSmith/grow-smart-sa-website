@@ -104,8 +104,21 @@
     requestAnimationFrame(step);
   }
   var countEls = document.querySelectorAll("[data-count]");
-  if (countEls.length && !prefersReducedMotion) {
-    if ("IntersectionObserver" in window) {
+  if (countEls.length) {
+    if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+      // No count-up animation in this case, so jump straight to the correct
+      // final value rather than leaving whatever static number sits in the
+      // markup (reduced-motion and older-browser visitors must still see the
+      // right figure, not a stale placeholder).
+      countEls.forEach(function (el) {
+        var target = parseFloat(el.getAttribute("data-count"));
+        if (isNaN(target)) return;
+        var decimals = parseInt(el.getAttribute("data-decimals") || "0", 10);
+        var prefix = el.getAttribute("data-prefix") || "";
+        var suffix = el.getAttribute("data-suffix") || "";
+        el.textContent = formatCount(target, decimals, prefix, suffix);
+      });
+    } else {
       var cio = new IntersectionObserver(
         function (entries) {
           entries.forEach(function (entry) {
@@ -204,7 +217,7 @@
     var body = encodeURIComponent(
       "Name: " + data.name + "\nEmail: " + data.email + "\nInterested in: " + data.interest + "\n\nMessage:\n" + data.message
     );
-    window.location.href = "mailto:tahriq@live.co.za?subject=" + subject + "&body=" + body;
+    window.location.href = "mailto:tahriq.smith@gmail.com?subject=" + subject + "&body=" + body;
     if (formNote) formNote.textContent = "Opening your email client with this message pre-filled...";
   }
 })();

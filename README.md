@@ -1,29 +1,36 @@
 # Grow Smart SA Website
 
-A complete, production-ready marketing website for Grow Smart SA (Pty) Ltd. It is a static site: plain HTML, CSS and JavaScript, with no build step and no framework. That means there is nothing to compile and nothing to break during deployment; you can put these files on almost any host and it will work immediately.
+The production marketing website for Grow Smart SA (Pty) Ltd. It is a static site: plain HTML, CSS and JavaScript, with no build step and no framework.
+
+**Live status:** this repository is deployed via Vercel, connected to the `main` branch, and served at [growsmartsa.online](https://growsmartsa.online). Pushing to `main` triggers an automatic redeploy.
 
 ## What's in this folder
 
 ```
-gsm_site/
-  index.html          Main site (single page, all sections)
-  terms.html           Terms & Support page (template, needs legal review)
-  privacy.html          Privacy Policy page (template, needs legal review)
-  robots.txt            Search engine crawl rules
-  sitemap.xml            Search engine sitemap
-  css/styles.css          All styles (design system + layout)
-  js/main.js              Navigation, animations, FAQ accordion, contact form
-  images/logo.png           Grow Smart SA logo
-  images/favicon-*.png, favicon.ico    Browser tab icons, generated from the logo
+index.html          Home
+training.html        Training programme
+product.html          The AI assessment tool
+pricing.html           Pricing
+proof.html              Traction / track record
+founder.html             Founder
+contact.html              Contact
+terms.html                 Terms & Support
+privacy.html                Privacy Policy
+robots.txt                    Search engine crawl rules
+sitemap.xml                    Search engine sitemap
+css/styles.css                  All styles (design system + layout)
+js/main.js                       Navigation, animations, FAQ accordion, contact form
+images/logo.png                   Grow Smart SA logo
+images/favicon-*.png, favicon.ico    Browser tab icons, generated from the logo
 ```
 
 Everything is self-contained. There are no external dependencies except Google Fonts, which are loaded from a CDN link in the page head.
 
-## Before you deploy: two things to update
+## Contact form
 
-1. **Domain name.** The site currently uses a placeholder domain, `www.growsmartsa.co.za`, in a few places that search engines and social previews read: `index.html` (the `<link rel="canonical">` tag and the Open Graph/Twitter meta tags near the top of `<head>`, plus the JSON-LD block near the bottom), `robots.txt`, and `sitemap.xml`. Once you know the exact domain you'll use (see the GoDaddy section below), do a find-and-replace for `growsmartsa.co.za` across those files and swap in your real one. This does not affect how the site looks or works; it only affects how search engines and shared links describe it.
+The contact form works out of the box with no setup: when someone submits it, their email app opens with a pre-filled message addressed to `tahriq.smith@gmail.com`. This is reliable and needs nothing extra, but it does depend on the visitor having an email client configured on their device. If you'd rather have submissions land silently in your inbox or a dashboard without opening the visitor's email app, see "Upgrading the contact form" below.
 
-2. **Contact form.** The contact form works out of the box with no setup: when someone submits it, their email app opens with a pre-filled message addressed to `tahriq@live.co.za`. This is reliable and needs nothing extra, but it does depend on the visitor having an email client configured on their device. If you'd rather have submissions land silently in your inbox or a dashboard without opening the visitor's email app, see "Upgrading the contact form" below.
+The sections below (deploying to Netlify, connecting a GoDaddy domain) describe an alternative path and are kept for reference; they are not the current deployment, which is Vercel + GitHub as described above.
 
 ## Recommended: deploy with Netlify
 
@@ -90,4 +97,4 @@ Then open `http://localhost:8000` in your browser. Press Ctrl+C in the terminal 
 
 ## Legal pages
 
-`terms.html` and `privacy.html` are starting templates, not finished legal documents. Both are marked `noindex` so search engines won't list them until you're ready, and both contain clearly marked placeholder sections (payment terms, data retention period, POPIA Information Officer details, and so on). Please have a South African legal professional review and complete these before relying on them, particularly the privacy policy given South Africa's Protection of Personal Information Act (POPIA) requirements.
+`terms.html` and `privacy.html` contain Grow Smart SA's approved terms and privacy content (no unfilled placeholders remain). Both are marked `noindex` so search engines won't index them. They are still intended as a practical starting point rather than final legal advice; please have a South African legal professional review them, particularly the privacy policy given South Africa's Protection of Personal Information Act (POPIA) requirements. The Information Officer section of the privacy policy is intentionally left open until that appointment and registration are formally confirmed.

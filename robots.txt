@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.growsmartsa.co.za/sitemap.xml
+Sitemap: https://growsmartsa.online/sitemap.xml
